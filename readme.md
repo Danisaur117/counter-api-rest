@@ -10,7 +10,7 @@ Ejercicio práctico para conectar un API rest y un frontend
 - flexbox
 
 ## TO DO
-- [ ] read data from backend
+- [x] read data from backend
 - [ ] increment
 - [ ] increment by amount
 - [ ] decrement
