@@ -15,13 +15,32 @@ document.addEventListener( 'DOMContentLoaded', function () {
         updateCounterDOM(data.counterValue);
     })
 
+
+    /*************/
     /* Listeners */
+    /*************/
     //Listener for increment when the button is clicked
     document.querySelector('header .increment').addEventListener('click', () => {
         fetch(baseApiUrl + '/increment')
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
             updateCounterDOM(data.counterValue);
         })
+    })
+
+    //Listener for increment by the value specified in the input field
+    document.querySelector('header .incrementBy').addEventListener('keyup', (ev) => {
+        //Update displayed value when the ENTER key is released while the input
+        //field has the focus
+        if(ev.keyCode === 13){
+            let amount = ev.target.value;
+
+            fetch(baseApiUrl + '/incrementBy/' + amount)
+            .then(res => res.json())
+            .then(data => {
+                updateCounterDOM(data.counterValue)
+                ev.target.value = '';
+            })
+        }
     })
 } )

@@ -27,7 +27,7 @@ app.get('/data', (req, res) => {
 
 
 //Increment value displayed
-app.get('/increment', (req, res) =>{
+app.get('/increment', (req, res) => {
     //Read data from file
     const jsonString =  fs.readFileSync('./db.json','UTF-8');
     const data = JSON.parse(jsonString);
@@ -39,6 +39,32 @@ app.get('/increment', (req, res) =>{
     fs.writeFileSync('./db.json', JSON.stringify(data));
 
     res.json(data);
+})
+
+
+//Increment value displayed by the specified amount
+app.get('/incrementBy/:amount', (req, res) => {
+    //Read data from file
+    const jsonString =  fs.readFileSync('./db.json','UTF-8');
+    const data = JSON.parse(jsonString);
+
+    //Parse specified amount
+    let amount = Number(req.params.amount);
+
+    //If amount is NaN (because parsing process has failed), return error code
+    if(isNaN(amount)){
+        res.status(500).json({message:'UPS :('});
+        return;
+    }
+    //If amount is a number, then update data value and write the result to file
+    else{
+        data.counterValue += amount;
+
+        //Write update data to file
+        fs.writeFileSync('./db.json', JSON.stringify(data));
+
+        res.json(data);
+    }
 })
 
 

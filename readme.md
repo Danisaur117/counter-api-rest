@@ -11,8 +11,8 @@ Ejercicio práctico para conectar un API rest y un frontend
 
 ## TO DO
 - [x] read data from backend
-- [ ] increment
-- [ ] increment by amount
+- [x] increment
+- [x] increment by amount
 - [ ] decrement
 - [ ] reset
 - [ ] background color
