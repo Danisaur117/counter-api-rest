@@ -19,4 +19,12 @@ app.use( function ( req, res, next ) {
 } );
 
 
+//Read data from file
+app.get('/data', (req, res) => {
+    const jsonString =  fs.readFileSync('./db.json','UTF-8');
+    const data = JSON.parse(jsonString);
+    res.json(data);
+})
+
+
 app.listen( port, () => console.log( 'Servidor levantado en ' + port ) );
