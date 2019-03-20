@@ -14,7 +14,7 @@ Ejercicio práctico para conectar un API rest y un frontend
 - [x] increment
 - [x] increment by amount
 - [x] decrement
-- [ ] reset
+- [x] reset
 - [ ] background color
     -  utilizar document.querySelector('main').style.backgroundColor = 'blue'
 - [ ] fix bug using , and .  more than once

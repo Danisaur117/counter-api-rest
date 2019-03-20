@@ -52,4 +52,13 @@ document.addEventListener( 'DOMContentLoaded', function () {
             updateCounterDOM(data.counterValue);
         })
     })
+
+    //Listener for reset the counter to 0
+    document.querySelector('header .reset').addEventListener('click', () => {
+        fetch(baseApiUrl + '/reset')
+        .then(res => res.json())
+        .then(data => {
+            updateCounterDOM(data.counterValue);
+        })
+    })
 } )

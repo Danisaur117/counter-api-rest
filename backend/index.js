@@ -84,5 +84,18 @@ app.get('/decrement', (req, res) => {
 })
 
 
+//Reset value displayed to 0
+app.get('/reset', (req, res) => {
+    //Read data from file
+    const jsonString =  '{"counterValue":0}';
+    const data = JSON.parse(jsonString);
+
+    //Write update data to file
+    fs.writeFileSync('./db.json', JSON.stringify(data));
+
+    res.json(data);
+})
+
+
 //Listen backend server on configured port
 app.listen(port, () => console.log('Servidor levantado en ' + port));
