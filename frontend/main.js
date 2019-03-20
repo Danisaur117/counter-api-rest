@@ -43,4 +43,13 @@ document.addEventListener( 'DOMContentLoaded', function () {
             })
         }
     })
+
+    //Listener for decrement when the button is clicked
+    document.querySelector('header .decrement').addEventListener('click', () => {
+        fetch(baseApiUrl + '/decrement')
+        .then(res => res.json())
+        .then(data => {
+            updateCounterDOM(data.counterValue);
+        })
+    })
 } )

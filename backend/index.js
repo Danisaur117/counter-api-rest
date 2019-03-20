@@ -68,5 +68,21 @@ app.get('/incrementBy/:amount', (req, res) => {
 })
 
 
+//Decrement value displayed
+app.get('/decrement', (req, res) => {
+    //Read data from file
+    const jsonString =  fs.readFileSync('./db.json','UTF-8');
+    const data = JSON.parse(jsonString);
+
+    //Update data value
+    data.counterValue -= 1;
+
+    //Write update data to file
+    fs.writeFileSync('./db.json', JSON.stringify(data));
+
+    res.json(data);
+})
+
+
 //Listen backend server on configured port
 app.listen(port, () => console.log('Servidor levantado en ' + port));
