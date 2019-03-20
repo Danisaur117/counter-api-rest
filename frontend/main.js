@@ -12,7 +12,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
     fetch(baseApiUrl + '/data')
     .then(response => response.json())
     .then(data => {
-        updateCounterDOM(data.counterValue);
+        updateCounterDOM(data.counterValue)
+        document.querySelector('main').style.backgroundColor = data.color;
     })
 
 
@@ -60,5 +61,15 @@ document.addEventListener( 'DOMContentLoaded', function () {
         .then(data => {
             updateCounterDOM(data.counterValue);
         })
+    })
+
+    //Listener for change the color of the background
+    document.querySelector('header .color').addEventListener('change', (ev) => {
+        //Update the color of the background
+        let colorPicked = ev.target.value;
+
+        //fetch(baseApiUrl + '/color/' + colorPicked)
+        //.then(res => res.json())
+        document.querySelector('main').style.backgroundColor = ev.target.value;
     })
 } )

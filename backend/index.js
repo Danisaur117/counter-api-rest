@@ -86,9 +86,24 @@ app.get('/decrement', (req, res) => {
 
 //Reset value displayed to 0
 app.get('/reset', (req, res) => {
-    //Read data from file
-    const jsonString =  '{"counterValue":0}';
+    const jsonString =  '{"counterValue":0,"color":"grey"}';
     const data = JSON.parse(jsonString);
+
+    //Write update data to file
+    fs.writeFileSync('./db.json', JSON.stringify(data));
+
+    res.json(data);
+})
+
+
+//Change the color of the background
+app.get('/color/:colorPicked', (req, res) => {
+    //Read data from file
+    const jsonString =  fs.readFileSync('./db.json','UTF-8');
+    const data = JSON.parse(jsonString);
+
+    //Update background color
+    data.color = req.params.colorPicked;
 
     //Write update data to file
     fs.writeFileSync('./db.json', JSON.stringify(data));
