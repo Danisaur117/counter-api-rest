@@ -3,9 +3,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
     /* Declarations */
     /****************/
     const baseApiUrl = 'http://localhost:4000';
-    const counterNode = document.querySelector( ".counter");
+    const counterNode = document.querySelector(".counter");
     const updateCounterDOM = (value) => {
-        counterNode.innerText(value);
+        counterNode.innerText = String(value);
     }
 
     //Get initial value from backend
