@@ -103,7 +103,7 @@ app.get('/color/:colorPicked', (req, res) => {
     const data = JSON.parse(jsonString);
 
     //Update background color
-    data.color = req.params.colorPicked;
+    data.color = '#' + req.params.colorPicked;
 
     //Write update data to file
     fs.writeFileSync('./db.json', JSON.stringify(data));

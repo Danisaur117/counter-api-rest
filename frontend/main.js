@@ -68,8 +68,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
         //Update the color of the background
         let colorPicked = ev.target.value;
 
-        //fetch(baseApiUrl + '/color/' + colorPicked)
-        //.then(res => res.json())
+        colorPicked = colorPicked.replace('#', ''); //We cannot pass the # char
+        fetch(baseApiUrl + '/color/' + colorPicked)
+        .then(res => res.json())
         document.querySelector('main').style.backgroundColor = ev.target.value;
     })
 } )
